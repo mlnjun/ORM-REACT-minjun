@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>회원가입</title>
+
+  <link rel="stylesheet" href="./css/signup.css">
+
+
+</head>
+
+<body>
+
+  <div class="container">
+
+    <a href="http://www.naver.com" target="_blank">
+      <img id="logo" src="./img/logo.png">
+    </a>
+
+    <div id="signup_block">
+      <h3>회원가입</h3>
+
+      <form id="signup_from">
+        <span>아이디</span> <br>
+        <input type="text" id="id" placeholder="아이디"> <br>
+        <span>암호</span> <br>
+        <input type="password" id="password" placeholder="암호"> <br>
+        <span>암호 재확인</span> <br>
+        <input type="password" id="pw_check" placeholder="암호 재확인"> <br>
+        <span>이름</span> <br>
+        <input type="text" id="name" placeholder="이름"> <br>
+  
+        <span>생년월일</span> <br>
+        <input type="text" id="birth_year" placeholder="1900">
+        <select id="birth_month" placeholder="월">
+          <option value="1">1</option>
+          <option value="2">2</option>
+          <option value="3">3</option>
+          <option value="4">4</option>
+          <option value="5">5</option>
+          <option value="6">6</option>
+          <option value="7">7</option>
+          <option value="8">8</option>
+          <option value="9">9</option>
+          <option value="10">10</option>
+          <option value="11">11</option>
+          <option value="12">12</option>
+        </select>
+        <input type="number" id="birth_day" min="1" max="31" placeholder="일"> <br>
+  
+        <span>성별</span> <br>
+        <input id="gender" placeholder="성별"> <br>
+        <span>이메일</span> <br>
+        <input id="email" placeholder="이메일"> <br>
+        <span>전화번호</span> <br>
+        <input id="phone" placeholder="전화번호">
+        <button id="phone_auth">인증번호 받기</button> <br>
+        <span>인증번호 입력</span> <br>
+        <input id="auth_number" placeholder="인증번호를 입력하세요"> <br>
+  
+        <button id="login_button">회원 가입</button>
+      </form>
+    </form>
+
+  </div>
+
+</body>
+</html>

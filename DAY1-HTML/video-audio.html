@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  
+  <h2>비디오 실습</h2>
+  <!-- video 속성 : autoplay, poster=".img",  -->
+  <video width="320" height="240" controls>  
+    <source src="LupinRun.mp4" type="video/mp4"/>
+  </video> <br>
+
+  <!-- iframe 태그는 외부 링크 주소 리소스를 내 웹페이지에 삽입해주는 기능 제공 -->
+  <div style="width: 500px; height: 450;">
+    <iframe
+    src="https://www.youtube.com/embed/1SgkS73-WKw?si=8PYqdhvd3G6r744A"
+    title="YouTube video player"
+    frameborder="0"
+    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+    allowfullscreen>
+    </iframe>
+
+  </div>
+
+  <h2>오디오 실습</h2>
+
+  <audio controls muted>
+    <source src="Kalimba.mp3" type="audio/mpeg">
+    <source src="Kalimba.ogg" type="audio/ogg">
+  </audio>
+
+</body>
+</html>

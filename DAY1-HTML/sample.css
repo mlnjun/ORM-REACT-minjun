@@ -1,0 +1,8 @@
+/*
+인라인, 인베디드, 외부 리소스 style
+인라인 = 외부리소스 < 인베디드
+*/
+
+p {
+  background-color: beige;
+}

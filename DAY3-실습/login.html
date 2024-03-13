@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>로그인</title>
+
+  <link href="https://hangeul.pstatic.net/hangeul_static/css/nanum-square.css" rel="stylesheet">
+
+  <style>
+
+    * {
+      font-family: 'NanumSquareLight';
+      margin: 0 auto;
+    }
+
+    body {
+      background-color: #F5F6F7;
+    }
+
+    h3 {
+      margin-top: 12px;
+    }
+
+    .container {
+      text-align: center;
+    }
+
+    #logo {
+      margin-top: 100px;
+      width:155px;
+      height: 30px;
+    }
+
+    #login_form {
+      background-color: rgba(255, 255, 255, 0.438);
+      border: 1.5px solid rgba(151, 151, 151, 0.6);
+      border-radius: 5px;
+      margin-top: 50px;
+      padding: 63.75px 0 63.75px;
+      width: 458px;
+      height: 255px;
+      text-align: center;
+    }
+
+    #id, #password {
+      border: 2px solid #f4f4f4;
+      width: 80%;
+      height: 40px;
+      margin-top: 20px;
+      padding-left: 10px;
+      padding-right: 10px;
+      font-size: 16px;
+      font-family: 'NanumSquareLight';
+
+    }
+
+    #login_button {
+      border: none;
+      border-radius: 5px;
+      width: 80%;
+      height: 40px;
+      margin-top: 30px;
+      background-color: #03C75A;
+      color: #ffffff;
+      font-size: 16px;
+      font-weight: 700;
+    }
+
+  </style>
+
+
+</head>
+
+<body>
+
+  <div class="container">
+
+    <a href="http://www.naver.com" target="_blank">
+      <img id="logo" src="./img/logo.png">
+    </a>
+
+    <form id="login_form">
+      <h3>로그인</h3>
+
+      <input id="id" placeholder="아이디"> <br>
+      <input id="password" placeholder="패스워드">
+
+      <button id="login_button">로그인</button>
+    </form>
+
+  </div>
+
+</body>
+</html>

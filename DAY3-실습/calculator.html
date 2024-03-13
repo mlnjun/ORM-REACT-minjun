@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>계산기</title>
+
+  <link rel="stylesheet" href="./css/calculator.css">
+</head>
+<body>
+
+  <div class="calculator">
+    <input type="text" class="display">
+    <div class="buttons">
+      <button onclick="number(7)">7</button>
+      <button onclick="number(8)">8</button>
+      <button onclick="number(9)">9</button>
+      <button onclick="operator('/')">/</button>
+      <button onclick="number(4)">4</button>
+      <button onclick="number(5)">5</button>
+      <button onclick="number(6)">6</button>
+      <button onclick="operator('*')">*</button>
+      <button onclick="number(1)">1</button>
+      <button onclick="number(2)">2</button>
+      <button onclick="number(3)">3</button>
+      <button onclick="operator('-')">-</button>
+      <button onclick="number('.')">.</button>
+      <button onclick="number(0)">0</button>
+      <button onclick="calculate()">=</button>
+      <button onclick="operator('+')">+</button>
+    </div>
+  </div>
+
+
+  <script
+  src="https://code.jquery.com/jquery-3.7.1.min.js"
+  integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo="
+  crossorigin="anonymous"></script>
+
+  <script>
+    // 
+    let inputString = "";
+    let display = "";
+    let result = "";
+    let calcIntermediate = "";
+
+    function number(v) {
+      inputString += `${v}`;
+      document.querySelector('.display').value += `${v}`;
+    }
+
+    function operator(v) {
+      currentOperator = `${v}`;
+      inputString += `${v}`;
+      document.querySelector('.display').value += `${v}`;
+    }
+
+    // 전체 계산 함수
+    function calculate() {
+
+      display = $(".display").val();
+
+      // GPT사용 연산자만 필터링
+      // -display.match(/\d+|[+\-*\/]/g) 
+      // ㄴ \d : 0-9까지의 숫자,  *: 2번이상 반복되는 수 포함  ex)=> \d*는 0~9의 숫자가 반복되면 모두 포함
+      //  +: \d와 연속된 숫자 포함,  | : or,  ?: 바로 앞 문자가 0번 or 1번 포함될 수 있음  ex)=> /1234?5/일때 12345 > 12345, 1235 > 1235
+      // [+\-*\/] : +,-,*,/ 모두 포함 -,/는 \으로 구분해준다(정규표현식 문법과 겹친다.), /g : 전역으로 찾음(없으면 하나만 찾고 끝남)
+      // -.filter((v) => !/\d/.test(v));
+      // 각 v마다 정규표현식 '/\d/'을 통해 .test메소드로 검사해서 숫자면 false로 숫자를 걸려준다.
+      let formula = display.match(/\d*\.?\d+|[+\-*\/()]/g);
+
+      console.log(formula);
+
+      // 괄호 찾기
+
+      // 곱셈 나눗셈
+      formula = calcMultipDiv(formula);
+
+      // 덧셈 뺄셈
+      formula = calcAddSubtract(formula);
+
+      // 결과값 출력
+      $('.display').val(formula);
+    }
+
+    // 괄호안 우선 계산 함수
+    function calcParentheses(arr) {
+      // 괄호 찾기
+      while(arr.includes('(') && arr.includes(')')){
+        // 괄호 존재 > 괄호 안 식 분리
+        let parenFormula = arr.slice(arr.indexOf('(') + 1, arr.indexOf(')') - 1);
+
+        // 곱셈/나눗셈 우선계산 함수
+        parenFormula = calcMultipDiv(parenFormula);
+
+        // 나머지 덧셈/뺄셈 계산 함수
+        parenFormula = calcAddSubtract(parenFormula);
+
+        // 식 배열 괄호안 제거 + 계산 값 넣기
+        arr.splice(arr.indexOf('('), arr.indexOf(')') - arr.indexOf('(') + 1, parenFormula);
+      }
+
+      // 계산
+      return arr;
+    }
+
+    // 곱셈/나눗셈 우선 계산 함수
+    function calcMultipDiv(arr) {
+      let multipIndex = 0;
+      let divIndex = 0;
+      
+      // 식에 곱셈, 나눗셈 있으면 계속 반복
+      while(arr.includes('*') || arr.includes('/')){
+        
+        // *, / 인덱스 추출
+        multipIndex = arr.indexOf('*');
+        divIndex = arr.indexOf('/');
+
+        // 순서 빠른 것 부터 계산순서 정하기
+        if(multipIndex != -1 && divIndex != -1){
+          var operatorIndex = multipIndex < divIndex
+          ? multipIndex
+          : divIndex;
+        }else if(multipIndex == -1){
+          // '*'못찾으면 '/'index 추출 
+          operatorIndex = divIndex;
+        }else{
+           // '/'못찾으면 '*'index 추출 
+          operatorIndex = multipIndex;
+        }
+
+        // 계산
+        switch(arr[operatorIndex]){
+          case '*':
+            calcIntermediate = arr[operatorIndex - 1] * arr[operatorIndex + 1];
+            break;
+          case '/':
+            calcIntermediate = arr[operatorIndex - 1] / arr[operatorIndex + 1];
+            break;
+        }
+
+        // 배열에 계산한 숫자,연산자 제거 후 결과 넣기
+        arr.splice(operatorIndex - 1, 3, calcIntermediate);
+      }
+
+      return arr
+    }
+
+    // 남은 덧셈/뺄셈 계산 함수
+    function calcAddSubtract(arr) {
+      return arr.reduce((accumulator, curValue, i, arr) => {
+        switch(curValue){
+          case '+':
+            return parseFloat(accumulator) + parseFloat(arr[i+1]);
+            break;
+          case '-':
+            return parseFloat(accumulator) + parseFloat(arr[i+1]);
+            break;
+          default:
+            return parseFloat(accumulator);
+        }
+      });
+    }
+
+  </script>
+  
+</body>
+</html>

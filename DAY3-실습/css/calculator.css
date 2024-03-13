@@ -1,0 +1,40 @@
+* {
+  box-sizing: border-box;
+}
+
+.calculator {
+  background-color: rgba(0, 38, 255, 0.158);
+  margin: 100px auto 0px;
+  text-align: center;
+  border: 2px solid rgb(90, 103, 139);
+  border-radius: 5px;
+  width: 400px;
+  height: auto;
+  padding: 30px 30px;
+}
+
+.display {
+  margin-bottom: 10px;
+  width: 98%;
+  height: 40px;
+  padding: 0 7px;
+  border: 1px solid rgb(54, 54, 54);
+  border-radius: 3px;
+  font-size: 25px;
+  font-weight: 400;
+  text-align: right;
+}
+
+.buttons > button{
+  background-color: rgba(0, 17, 255, 0.5);
+  color: white;
+  width: 23.2%;
+  height: 40px;
+  border: 1px solid rgb(54, 54, 54);
+  border-radius: 3px;
+  margin-bottom: 5px;
+}
+
+.buttons > button:hover {
+  background-color: rgba(0, 17, 255, 0.733);
+}

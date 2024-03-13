@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+
+  <style>
+
+    .welcome {
+      visibility: hidden;
+      height: 100px;
+    }
+
+    #first {
+      display: none;
+    }
+
+  </style>
+</head>
+<body>
+  
+  <h1>블록 수준 html요소</h1>
+  <div style="border: 1px solid black;">
+    <div class="welcome">블록 수준 요소는 한줄을 다 잡아먹는다. - div</div>
+  </div>
+
+  <!-- 블럭 요소를 인라인 요소처럼 작동시키기 -display:inline; -->
+  <div style="display: inline;">
+    테스트입니다.
+  </div>
+  <span>인라인 스팬태그입니다.</span>
+
+  <hr>
+
+  <!-- 인라인 요소를 블럭요소처럼 작동시키기 -display:block; -->
+  <span style="display: block;">인라인 스팬태그1입니다.</span>
+  <span>인라인 스팬태그2입니다.</span>
+  <span>인라인 스팬태그3입니다.</span>
+
+  <h1>최고 굵기로 표시됨 - h1</h1>
+  <h2>두번째 굵기로 표시 - h2</h2>
+  <p>줄바뀜이 발생한다. - p</p>
+
+
+  <h1>인라인 수준 html요소</h1>
+  <img id="first" src="./code.jpg" width="200" height="250">
+  <img src="./code.jpg" width="200" height="250">
+  <img src="./code.jpg" width="200" height="250">
+
+  ㅣ<a href="#">대메뉴1</a> ㅣ<a href="#">대메뉴2</a> ㅣ<a href="#">대메뉴3</a> ㅣ<br>
+
+  <span>인라인 수준 요소 - span</span>
+  <span>인라인 수준 요소 - span</span>
+  <span>인라인 수준 요소 - span</span>
+  <span>인라인 수준 요소 - span</span>
+
+
+
+</body>
+</html>
