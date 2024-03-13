@@ -23,7 +23,7 @@ display.next() // 2
 
 display.next() // 3
 
-display.next() // 제너레이터 함수 끝나서 실행 x
+display.next() // 제너레이터 함수 끝나서 실행 xx
 
 // 루프되는 로직 구현할 때 좋아보임
 // 무한 반복 제너레이터 함수fff
