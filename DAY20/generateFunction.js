@@ -26,11 +26,11 @@ display.next() // 3
 display.next() // 제너레이터 함수 끝나서 실행 x
 
 // 루프되는 로직 구현할 때 좋아보임
-// 무한 반복 제너레이터 함수
+// 무한 반복 제너레이터 함수fff
 let i = 0
 const gen2 = function* () {
   while (true) {
-    // yield 전에 로직처리 후 반환값은 yield에 표시함
+    // yield 전에 로직처리 후 반환값은 yield에 표시함s
     // yield 반환값 지정
     yield i++
   }
