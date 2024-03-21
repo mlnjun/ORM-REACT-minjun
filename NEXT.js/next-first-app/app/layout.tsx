@@ -23,10 +23,7 @@ export default function RootLayout({
       <body className={inter.className}>
         <main className="flex min-h-screen flex-col items-center p-24">
           <Header />
-          <div className='mt-10'>
-          {children}
-
-          </div>
+          <div className="mt-10">{children}</div>
         </main>
       </body>
     </html>
